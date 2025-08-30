@@ -7,6 +7,7 @@ export default function AddMovieForm({ onAdd }) {
   const [description, setDescription] = useState("");
   const [posterURL, setPosterURL] = useState("");
   const [rating, setRating] = useState(0);
+  const [trailer, setTrailer] = useState(""); // NEW
   const [error, setError] = useState("");
 
   function handleSubmit(e) {
@@ -30,6 +31,7 @@ export default function AddMovieForm({ onAdd }) {
       description: description.trim(),
       posterURL: posterURL.trim(),
       rating: r,
+      trailer: trailer.trim(), // NEW
     });
 
     // Reset form fields
@@ -37,6 +39,7 @@ export default function AddMovieForm({ onAdd }) {
     setDescription("");
     setPosterURL("");
     setRating(0);
+    setTrailer(""); // NEW
     setError("");
   }
 
@@ -78,6 +81,18 @@ export default function AddMovieForm({ onAdd }) {
           value={posterURL}
           onChange={(e) => setPosterURL(e.target.value)}
           placeholder="https://..."
+        />
+      </div>
+
+      {/* NEW: trailer embed link */}
+      <div className="field">
+        <label htmlFor="new-trailer">Trailer Embed URL (YouTube)</label>
+        <input
+          id="new-trailer"
+          type="url"
+          value={trailer}
+          onChange={(e) => setTrailer(e.target.value)}
+          placeholder="https://www.youtube.com/embed/xxxxxxx"
         />
       </div>
 
